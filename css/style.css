@@ -1,0 +1,21 @@
+.square{
+    width: 130px;
+    height: 130px;
+    border: 1px solid black;
+
+}
+
+.wrapper {
+    display: grid;
+    grid-template: repeat(6, auto) / repeat(6, auto);
+    place-content: center;
+    gap: 2px;
+}
+
+.yellow  {
+    background: rgb(255, 255, 79);
+}
+
+.green {
+    background-color: rgb(7, 214, 7);
+}
