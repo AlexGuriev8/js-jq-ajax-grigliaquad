@@ -13,26 +13,38 @@ $(document).ready(function(){
 
     $('.wrapper').on('click', '.square', function () {
         var square = $(this);
+        /* console.log(square); */
 
-    $.ajax(
-        {
-            url: "https://flynn.boolean.careers/exercises/api/random/int",
-            method: "GET",
-            success: function (risposta) {
-               var number = risposta.response;
-               square.text(number);
-               if( number <= 5 ){
-                   square.addClass('yellow');
-               }else {
-                   square.addClass('green');
-               }
-            },
-            error: function () {
-                alert("E' avvenuto un errore. " + errore);
-            }
+        if (!square.hasClass('clicked')) {
+            $.ajax(
+                {
+                    url: "https://flynn.boolean.careers/exercises/api/random/int",
+                    method: "GET",
+                    success: function (risposta) {
+                        square.addClass('clicked');
+
+                        var number = risposta.response;
+                        square.text(number);
+                        if (number <= 5) {
+                            square.addClass('yellow');
+                        } else {
+                            square.addClass('green');
+                        }
+                    },
+                    error: function () {
+                        alert("E' avvenuto un errore. " + errore);
+                    }
+                }
+            );
+        }else {
+            alert('Already clicked');
         }
-    );
 
     });
-
 });
+
+
+
+
+
+    
